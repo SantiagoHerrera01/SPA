@@ -1,27 +1,24 @@
-# ==========================
-# Node modules
-# ==========================
-/Back/node_modules/
-/SPAFont/node_modules/
-
-# ==========================
-# Build outputs
-# ==========================
-/Back/dist/
-/SPAFont/dist/
-/SPAFont/dist-ssr/
-
-# ==========================
 # Logs
-# ==========================
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
+yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# ==========================
-# Editor directories
-# ==========================
-.vscode/
-.idea/
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
