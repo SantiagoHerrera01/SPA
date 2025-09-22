@@ -1,0 +1,34 @@
+# ==========================
+# Node modules
+# ==========================
+/Back/node_modules/
+/SPAFont/node_modules/
+
+# ==========================
+# Build outputs
+# ==========================
+/Back/dist/
+/SPAFont/dist/
+/SPAFont/dist-ssr/
+
+# ==========================
+# Logs
+# ==========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ==========================
+# Editor directories
+# ==========================
+.vscode/
+.idea/
+.DS_Store
+
+# ==========================
+# Optional npm cache
+# ==========================
+.npm
+.yarn
+.pnpm-store
