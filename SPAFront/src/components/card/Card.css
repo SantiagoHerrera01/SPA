@@ -1,0 +1,60 @@
+/* src/components/StudyCard.css */
+.study-card {
+  max-width: 320px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.study-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.study-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.study-card-content {
+  padding: 16px;
+}
+
+.study-card-title {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.study-card-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.study-card-button {
+  display: block;
+  padding: 8px 16px;
+  background-color: #ff00d4; /* azul */
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  margin: 0;
+  text-align: center;
+}
+
+.study-card-button:hover {
+  background-color: #ae00ff; 
+  color: black;
+  transition: 600ms;
+  cursor: pointer;
+}
