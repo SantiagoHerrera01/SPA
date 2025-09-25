@@ -1,8 +1,11 @@
 // src/components/Form.jsx
 import React, { useState } from "react";
+import axios from "axios";
 import "./Form.css";
 
-const Form = ({ onSubmit }) => {
+const API_URL = "http://localhost:5001/api";
+
+const Form = ({ onCourseCreated }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [courseName, setCourseName] = useState("");
   const [description, setDescription] = useState("");
@@ -10,16 +13,31 @@ const Form = ({ onSubmit }) => {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!courseName || !description) {
       alert("Por favor, completa todos los campos.");
       return;
     }
-    onSubmit({ courseName, description });
-    setCourseName("");
-    setDescription("");
-    closeModal();
+
+    try {
+      const res = await axios.post(
+        `${API_URL}/addCurso`,
+        {
+          nombre_curso: courseName,
+          descripcion: description,
+        },
+        { withCredentials: true }
+      );
+
+      onCourseCreated(res.data); // 👈 notifica al padre
+      setCourseName("");
+      setDescription("");
+      closeModal();
+    } catch (error) {
+      console.error("❌ Error al crear curso:", error);
+      alert("No tienes permisos para crear un curso o hubo un error.");
+    }
   };
 
   return (
@@ -42,7 +60,6 @@ const Form = ({ onSubmit }) => {
                 id="courseName"
                 value={courseName}
                 onChange={(e) => setCourseName(e.target.value)}
-                placeholder="Ingresa el nombre del curso"
               />
 
               <label htmlFor="description">Descripción</label>
@@ -50,7 +67,6 @@ const Form = ({ onSubmit }) => {
                 id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="Ingresa una descripción del curso"
               ></textarea>
 
               <button type="submit">Registrar Curso</button>

@@ -1,43 +1,35 @@
 import NavBar from "../../components/navBar/NavBar";
 import "./dashboard.css";
-import Card from "../../components/card/Card";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
 
 export default function Dashboard() {
-  const [courses, setCourses] = useState([]);
-  const API_URL = "http://localhost:5001/api";
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const res = await axios.get(`${API_URL}/getCursos`, { withCredentials: true });
-        setCourses(res.data);
-      } catch (err) {
-        console.error("Error al traer cursos:", err);
-      }
-    };
-    fetchCourses();
-  }, []);
+  const typedRef = useRef(null);
 
   const handleLogout = () => {
     console.log("Cerrar sesión");
   };
 
+  useEffect(() => {
+    const typed = new Typed(typedRef.current, {
+      strings: ["StudyHub"],
+      typeSpeed: 120,
+      backSpeed: 100,
+      loop: true,
+      showCursor: false,
+    });
+
+    return () => {
+      typed.destroy(); // limpieza al desmontar
+    };
+  }, []);
+
   return (
     <div className="dashboard">
       <NavBar onLogout={handleLogout} />
-      <div className="cards-container">
-        {courses.map((course) => (
-          <Card
-            key={course.id_curso}
-            title={course.nombre_curso}
-            description={course.descripcion}
-            imageUrl={course.imagen || "https://source.unsplash.com/400x300/?study"}
-            // link={`/curso/${course.id_curso}`}
-          />
-        ))}
-      </div>
+      <h1 className="title">
+        Bienvenido a <span className="title2" ref={typedRef}></span>
+      </h1>
     </div>
   );
 }

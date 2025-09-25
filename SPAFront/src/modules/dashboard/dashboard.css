@@ -1,3 +1,15 @@
-.cards-container{
-    display: flex;
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+h1.title{
+    font-family: "Tangerine", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+    padding: 2rem;
+}
+
+span.title2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ae00ff;
 }

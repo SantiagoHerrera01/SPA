@@ -1,8 +1,7 @@
-// src/components/StudyCard.jsx
+// src/components/Card.jsx
+import "./Card.css";
 
-import "./Card.css"; // Importamos el CSS
-
-const Card = ({ title, description, imageUrl, link }) => {
+const Card = ({ title, description, imageUrl, link, professor }) => {
   return (
     <div className="study-card">
       <a href={link}>
@@ -13,6 +12,9 @@ const Card = ({ title, description, imageUrl, link }) => {
           <h5 className="study-card-title">{title}</h5>
         </a>
         <p className="study-card-description">{description}</p>
+        <p className="study-card-professor">
+          👨‍🏫 Profesor: {professor || "No asignado aún"}
+        </p>
         <a className="study-card-button" href={link}>
           Inscribirse
         </a>
